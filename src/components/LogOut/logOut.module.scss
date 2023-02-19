@@ -1,0 +1,65 @@
+@import "../../style/var.scss";
+@import "../../style/fonts.scss";
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // position: absolute;
+  @media (max-width: 670px) {
+    // flex-direction: row;
+  }
+}
+.link {
+  margin-top: 6px;
+  display: flex;
+  transition: 0.2s;
+  padding: 6px;
+  border: 1px solid rgba(77, 10, 199, 0.8);
+  border-radius: 10px;
+}
+.link:hover {
+  transform: scale(1.09);
+  color: red;
+}
+.logOut {
+  font-size: $_16px;
+  font-family: "Inter";
+  font-weight: 500;
+}
+.AuthorName {
+  color: rgba(49, 48, 55, 1);
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+  font-size: $_16px;
+  font-family: "Inter";
+  outline: none;
+  background-color: transparent;
+  // @media (max-width: 670px) {
+  //   margin-right: 20px;
+  // }
+}
+.aurhor {
+  display: flex;
+  align-items: center;
+  // justify-content: space-around;
+  padding: 8px;
+  width: 100%;
+}
+.authorIcon {
+  width: 48px;
+  height: 48px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(77, 10, 199, 1);
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.1s;
+  font-size: 25px;
+  color: white;
+  margin-right: 10px;
+}

@@ -1,0 +1,40 @@
+@import "../../style/var.scss";
+@import "../../style/fonts.scss";
+.wrap {
+  margin: 0 15px;
+  display: flex;
+}
+.checkbox {
+  cursor: pointer;
+  width: 45px;
+  height: 20px;
+  background-color: #4253c3;
+  border-radius: 10px;
+  position: relative;
+}
+.checkbox.active {
+  background-color: #f3f3f3;
+}
+.circle {
+  width: 15px;
+  height: 15px;
+  background-color: #f3f3f3;
+  border-radius: 50%;
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.5s;
+}
+
+.circle.active {
+  background-color: #2435a7;
+  left: 27px;
+}
+.switchTheme {
+  font-size: $_16px;
+  font-family: "Inter";
+  font-weight: 500;
+  display: inline;
+  margin-right: 22px;
+}

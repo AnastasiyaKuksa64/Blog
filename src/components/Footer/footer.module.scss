@@ -1,0 +1,25 @@
+@import "../../style/var.scss";
+@import "../../style/fonts.scss";
+.footer {
+  width: 100%;
+}
+.container {
+  margin: auto;
+  max-width: 1170px;
+  padding: 0 15px;
+}
+.wrap {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -15px;
+  display: flex;
+  padding: 33px;
+}
+
+.designer {
+  margin: 0 15px;
+  font-size: $_16px;
+  line-height: 24px;
+  font-family: "Inter";
+  font-weight: 400;
+}
