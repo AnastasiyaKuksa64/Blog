@@ -2,7 +2,6 @@
 @import "../../style/fonts.scss";
 .Header {
   position: relative;
-  /* height: 100px; */
   width: 100%;
 }
 
@@ -69,7 +68,6 @@
   align-items: center;
   margin: auto;
   display: none;
-  // position: relative;
   @media (max-width: 670px) {
     display: flex;
   }
@@ -78,8 +76,6 @@
   padding: 8px 10px;
   display: flex;
   align-items: center;
-  // position: relative;
-  // display: none;
 }
 .burger_button {
   padding: 8px 10px;
@@ -121,7 +117,6 @@
   align-items: center;
   transition: 0.3s;
   cursor: pointer;
-  // position: relative;
 }
 .burger_link {
   margin-bottom: 14px;
@@ -138,20 +133,21 @@
   cursor: pointer;
   width: 232px;
   transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   @media (max-width: 670px) {
     display: none;
   }
 }
-.wrapLink:hover {
-  background-color: rgba(49, 48, 55, 0.1);
+.link:hover {
+  background-color: rgba(77, 10, 199, 0.2);
 }
 .link {
-  width: 100%;
   background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  border-left: 1px solid transparent;
+  border: 1px solid rgb(195, 192, 222);
+  border-radius: 10px;
+  padding: 15px 7px;
   transition: 0.5s;
 }
 .post {
@@ -197,9 +193,12 @@
 .button_user {
   justify-content: center;
   display: flex;
+  align-items: center;
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  padding: 7px 70px;
+  align-self: center;
   transition: 0.3s;
 }
 .button_user:hover {
@@ -208,8 +207,6 @@
 }
 .wrap_user {
   position: absolute;
-  // top: 80%;
-  // left: 80%;
   right: 0px;
   bottom: -40px;
   width: 100%;

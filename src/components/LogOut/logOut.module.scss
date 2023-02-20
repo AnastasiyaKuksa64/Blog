@@ -13,12 +13,12 @@
   margin-top: 6px;
   display: flex;
   transition: 0.2s;
-  padding: 6px;
+  padding: 6px 40px;
   border: 1px solid rgba(77, 10, 199, 0.8);
   border-radius: 10px;
 }
 .link:hover {
-  transform: scale(1.09);
+  transform: scale(1.08);
   color: red;
 }
 .logOut {

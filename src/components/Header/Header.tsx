@@ -43,8 +43,6 @@ const Header: React.FC<SearchBoxProps> = (props) => {
               setisShows={setisShows}
               SearchTerm={searchTerm}
             />
-            {/* при нажатии на кнопку дропдауна в headerIcon дергается картирка, обновлется всё приложение ? в network приходит звпрос на рендеринг постов заново при открытии м закрытии дропдауна, почему? */}
-            {/* переделать дропдаун, он лежит в элементе который, если пользователь зарегестрирован ведет обратно на главную станицу */}
             <HeaderIcon />
             <div className={style.burger}>
               <div className={style.wrap_burger}>
@@ -69,8 +67,10 @@ const Header: React.FC<SearchBoxProps> = (props) => {
                         setisShows={setisShows}
                         SearchTerm={searchTerm}
                       />
-                      <User />
-                      <LogOut />
+                      <div className={style.icon_wrap}>
+                        <User />
+                        <LogOut />
+                      </div>
                     </div>
                   ) : (
                     <div className={style.wr}>

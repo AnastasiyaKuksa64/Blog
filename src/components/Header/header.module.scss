@@ -69,17 +69,15 @@
   align-items: center;
   margin: auto;
   display: none;
-  // position: relative;
   @media (max-width: 670px) {
     display: flex;
+    width: 100%;
   }
 }
 .wrap_burger {
   padding: 8px 10px;
   display: flex;
-  align-items: center;
-  // position: relative;
-  // display: none;
+  align-self: flex-end;
 }
 .burger_button {
   padding: 8px 10px;
@@ -95,6 +93,7 @@
   font-size: $_25px;
 }
 .wr {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -121,7 +120,6 @@
   align-items: center;
   transition: 0.3s;
   cursor: pointer;
-  // position: relative;
 }
 .burger_link {
   margin-bottom: 14px;
@@ -208,8 +206,6 @@
 }
 .wrap_user {
   position: absolute;
-  // top: 80%;
-  // left: 80%;
   right: 0px;
   bottom: -40px;
   width: 100%;
@@ -229,4 +225,9 @@
   display: flex;
   flex-direction: column;
   position: relative;
+}
+.icon_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

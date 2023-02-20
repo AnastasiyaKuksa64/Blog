@@ -16,36 +16,36 @@ const HeaderIcon: React.FC = () => {
   return (
     <>
       <div className={style.wrapLink}>
-        <Link className={style.link} to="/signIn">
-          {isLogin ? (
-            <div className={style.user_wrap}>
-              <User />
-              <div className={style.parent}>
-                <button
-                  className={style.button_user}
-                  onClick={() => setIsClick(!isClick)}
-                >
-                  <FontAwesomeIcon
-                    className={style.icon_down}
-                    icon={faSortDown}
-                  />
-                </button>
-                {isClick && (
-                  <div className={style.wrap_user}>
-                    <LogOut />
-                  </div>
-                )}
-              </div>
+        {isLogin ? (
+          <div className={style.user_wrap}>
+            <User />
+            <div className={style.parent}>
+              <button
+                className={style.button_user}
+                onClick={() => setIsClick(!isClick)}
+              >
+                <FontAwesomeIcon
+                  className={style.icon_down}
+                  icon={faSortDown}
+                />
+              </button>
+              {isClick && (
+                <div className={style.wrap_user}>
+                  <LogOut />
+                </div>
+              )}
             </div>
-          ) : (
-            <>
-              <div className={style.authorIcon}>
-                <FontAwesomeIcon icon={faUser} />
-              </div>
+          </div>
+        ) : (
+          <>
+            <div className={style.authorIcon}>
+              <FontAwesomeIcon icon={faUser} />
+            </div>
+            <Link className={style.link} to="/signIn">
               <span className="AuthorName">Sign in</span>
-            </>
-          )}
-        </Link>
+            </Link>
+          </>
+        )}
       </div>
     </>
   );
