@@ -1,4 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+// import pickBy from 'lodash/pickBy';
+// import identity from 'lodash/identity';
+// import axios from 'axios';
 
 type Post = {
   date: string;
@@ -9,6 +12,12 @@ type Post = {
   rating: number | any;
   popular: string;
   id: string;
+};
+
+export type PostsParams = {
+  sortBy: string;
+  category: string;
+  currentPage: string;
 };
 
 type PostsState = {
@@ -27,7 +36,7 @@ export const fetchFilteredPosts = createAsyncThunk(
   "filteredPosts/filter",
   async (category: number, { rejectWithValue }) => {
     // const { category, page } = parameters;
-    //так не работает, почему ??
+    //так перестает работать фильтерб работает только _limit, почему, чего-то нехватает ??
     const response = await fetch(
       `http://localhost:3000/posts?${
         category > 0 ? `category=${category}` : ""
@@ -41,6 +50,27 @@ export const fetchFilteredPosts = createAsyncThunk(
     return json;
   }
 );
+
+// export const fetchPizzas = createAsyncThunk<Post[], PostsParams>(
+//   'pizza/fetchPizzasStatus',
+//   async (params) => {
+//     const { sortBy,  category,  currentPage } = params;
+//     // console.log(params, 4444);
+//     const { data } = await axios.get<Post[]>(`https://626d16545267c14d5677d9c2.mockapi.io/items`, {
+//       params: pickBy(
+//         {
+//           page: currentPage,
+//           limit: 6,
+//           category,
+//           sortBy,
+//         },
+//         //  identity,
+//       ),
+//     });
+
+//     return data;
+//   },
+// );
 
 export const filteredPostsSlice = createSlice({
   name: "filteredPosts",

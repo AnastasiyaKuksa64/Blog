@@ -58,7 +58,7 @@ export const fetchLogin = createAsyncThunk<
       }
     );
     if (!response.ok) {
-      throw new Error("Server Error login");
+      throw new Error("Сheck your username and passwor");
     }
 
     const json = await response.json();

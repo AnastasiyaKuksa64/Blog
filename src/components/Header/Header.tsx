@@ -8,6 +8,7 @@ import SearchBox from "../SearchBox/index";
 import SearchBoxMobile from "../SearchBoxMobile";
 import LogOut from "../LogOut/logoutLink";
 import User from "../User/user";
+import HeaderIcon from "../HeaderIcon/HeaderIcon";
 
 interface SearchBoxProps {
   setSearchTerm: Dispatch<SetStateAction<string>>;
@@ -21,7 +22,6 @@ const Header: React.FC<SearchBoxProps> = (props) => {
   const Search = useAppSelector((state) => state.searchTerm.search);
   const isLogin = useAppSelector((state) => state.User.isLoggedIn);
   const [isActive, setIsActive] = useState(false);
-  const [isClick, setIsClick] = useState(false);
 
   useEffect(() => {
     setisShows(!!Search.length);
@@ -43,38 +43,9 @@ const Header: React.FC<SearchBoxProps> = (props) => {
               setisShows={setisShows}
               SearchTerm={searchTerm}
             />
-            <div className={style.wrapLink}>
-              <Link className={style.link} to="/signIn">
-                {isLogin ? (
-                  <div className={style.user_wrap}>
-                    <User />
-                    <div className={style.parent}>
-                      <button
-                        className={style.button_user}
-                        onClick={() => setIsClick(!isClick)}
-                      >
-                        <FontAwesomeIcon
-                          className={style.icon_down}
-                          icon={faSortDown}
-                        />
-                      </button>
-                      {isClick && (
-                        <div className={style.wrap_user}>
-                          <LogOut />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  <>
-                    <div className={style.authorIcon}>
-                      <FontAwesomeIcon icon={faUser} />
-                    </div>
-                    <span className="AuthorName">Sign in</span>
-                  </>
-                )}
-              </Link>
-            </div>
+            {/* при нажатии на кнопку дропдауна в headerIcon дергается картирка, обновлется всё приложение ? в network приходит звпрос на рендеринг постов заново при открытии м закрытии дропдауна, почему? */}
+            {/* переделать дропдаун, он лежит в элементе который, если пользователь зарегестрирован ведет обратно на главную станицу */}
+            <HeaderIcon />
             <div className={style.burger}>
               <div className={style.wrap_burger}>
                 <button

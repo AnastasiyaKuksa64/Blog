@@ -4,6 +4,7 @@ import SerchTermReducer from "../appSlices/SearchTermSlice";
 import ThemeReducer from "../appSlices/ThemeSlice";
 import SignInReducer from "../appSlices/SignInSlice";
 import filteredPostsReducer from "../appSlices/filterSlice";
+import SignUpReducer from "../appSlices/SignUpSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     searchTerm: SerchTermReducer,
     Theme: ThemeReducer,
     User: SignInReducer,
+    Registration: SignUpReducer,
     filterPosts: filteredPostsReducer,
   },
 });
