@@ -9,20 +9,43 @@ import SignIn from "./pages/SignIn/SignIn";
 import Register from "./pages/Register/Register";
 import Footer from "./components/Footer/Footer";
 import { useAppSelector } from "./app/hooks";
-import { fetchRefresh } from "./appSlices/SignInSlice";
+import { fetchRefresh, isLogin } from "./appSlices/SignInSlice";
 
 function App() {
   const DarkTheme = useAppSelector((state) => state.Theme);
+  const isLoggedIn = useAppSelector((state) => state.User.isLoggedIn);
   const dispatch = useAppDispatch();
+
+  // useEffect(() => {
+  //   const refreshInterval = setInterval(() => {
+  //     const user = localStorage.getItem("user");
+  //     if (user && JSON.parse(user).refresh) {
+  //       dispatch(fetchRefresh({ refresh: JSON.parse(user).refresh }));
+  //     }
+  //   }, 400000);
+  //   return () => clearInterval(refreshInterval);
+  // }, [dispatch]);
+
   useEffect(() => {
-    const refreshInterval = setInterval(() => {
-      const user = localStorage.getItem("user");
-      if (user && JSON.parse(user).refresh) {
-        dispatch(fetchRefresh({ refresh: JSON.parse(user).refresh }));
+    const userTokens = localStorage.getItem("user");
+    if (userTokens && JSON.parse(userTokens).refresh) {
+      dispatch(fetchRefresh({ refresh: JSON.parse(userTokens).refresh }));
+    }
+    const verifyInterval = setInterval(() => {
+      if (userTokens && JSON.parse(userTokens).refresh) {
+        dispatch(fetchRefresh({ refresh: JSON.parse(userTokens).refresh }));
       }
-    }, 400000);
-    return () => clearInterval(refreshInterval);
-  }, [dispatch]);
+    }, 300000);
+
+    return () => clearInterval(verifyInterval);
+  }, []);
+
+  useEffect(() => {
+    const userTokens = localStorage.getItem("user");
+    if (userTokens && JSON.parse(userTokens).access && isLoggedIn) {
+      dispatch(isLogin(JSON.parse(userTokens).access));
+    }
+  }, [isLoggedIn]);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [isShows, setisShows] = useState(false);
