@@ -16,24 +16,14 @@ function App() {
   const isLoggedIn = useAppSelector((state) => state.User.isLoggedIn);
   const dispatch = useAppDispatch();
 
-  // useEffect(() => {
-  //   const refreshInterval = setInterval(() => {
-  //     const user = localStorage.getItem("user");
-  //     if (user && JSON.parse(user).refresh) {
-  //       dispatch(fetchRefresh({ refresh: JSON.parse(user).refresh }));
-  //     }
-  //   }, 400000);
-  //   return () => clearInterval(refreshInterval);
-  // }, [dispatch]);
-
   useEffect(() => {
-    const userTokens = localStorage.getItem("user");
-    if (userTokens && JSON.parse(userTokens).refresh) {
-      dispatch(fetchRefresh({ refresh: JSON.parse(userTokens).refresh }));
+    const user = localStorage.getItem("user");
+    if (user && JSON.parse(user).refresh) {
+      dispatch(fetchRefresh({ refresh: JSON.parse(user).refresh }));
     }
     const verifyInterval = setInterval(() => {
-      if (userTokens && JSON.parse(userTokens).refresh) {
-        dispatch(fetchRefresh({ refresh: JSON.parse(userTokens).refresh }));
+      if (user && JSON.parse(user).refresh) {
+        dispatch(fetchRefresh({ refresh: JSON.parse(user).refresh }));
       }
     }, 300000);
 
@@ -41,9 +31,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const userTokens = localStorage.getItem("user");
-    if (userTokens && JSON.parse(userTokens).access && isLoggedIn) {
-      dispatch(isLogin(JSON.parse(userTokens).access));
+    const user = localStorage.getItem("user");
+    if (user && JSON.parse(user).access && isLoggedIn) {
+      dispatch(isLogin(JSON.parse(user).access));
     }
   }, [isLoggedIn]);
 
