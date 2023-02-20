@@ -1,7 +1,4 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-// import pickBy from 'lodash/pickBy';
-// import identity from 'lodash/identity';
-// import axios from 'axios';
 
 type Post = {
   date: string;
@@ -50,27 +47,6 @@ export const fetchFilteredPosts = createAsyncThunk(
     return json;
   }
 );
-
-// export const fetchPizzas = createAsyncThunk<Post[], PostsParams>(
-//   'pizza/fetchPizzasStatus',
-//   async (params) => {
-//     const { sortBy,  category,  currentPage } = params;
-//     // console.log(params, 4444);
-//     const { data } = await axios.get<Post[]>(`https://626d16545267c14d5677d9c2.mockapi.io/items`, {
-//       params: pickBy(
-//         {
-//           page: currentPage,
-//           limit: 6,
-//           category,
-//           sortBy,
-//         },
-//         //  identity,
-//       ),
-//     });
-
-//     return data;
-//   },
-// );
 
 export const filteredPostsSlice = createSlice({
   name: "filteredPosts",
