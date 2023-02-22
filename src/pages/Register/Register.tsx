@@ -2,7 +2,7 @@ import styles from "./registretion.module.scss";
 import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import {
   changeErrorMessage,
   changeIsSuccess,
@@ -98,38 +98,6 @@ const Registeration: React.FC = () => {
                   />
                 </div>
               </form>
-              {/* <h2 className="Formtitle">Registration confirmation</h2>
-              <form className="Form" onSubmit={handleActivate}>
-                {errorMessage && (
-                  <span className={styles.err}>{errorMessage}</span>
-                )}
-                <div className={styles.Wrapparagraph}>
-                  <p className={styles.paragraph}>
-                    Please activate your account with the activation link in
-                    example@gmail.com. Please, check your email
-                  </p>
-                </div>
-                <div className={styles.input_wrap}>
-                  <label htmlFor="token">Your token</label>
-                  <input
-                    className="FormInput"
-                    type="text"
-                    required
-                    placeholder="Your token"
-                    onChange={(e) => setToken(e.target.value)}
-                    value={token}
-                  />
-                </div>
-
-                <div className={styles.wrap_SignUpButton}>
-                  <input
-                    className={styles.SignUpButton}
-                    type="submit"
-                    value="Submit"
-                    placeholder="Sign up"
-                  />
-                </div>
-              </form> */}
             </>
           ) : (
             <>

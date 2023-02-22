@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 type ThemeState = boolean;
 

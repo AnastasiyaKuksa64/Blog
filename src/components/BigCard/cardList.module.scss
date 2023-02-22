@@ -20,14 +20,37 @@
   justify-content: center;
   font-family: "Inter";
   font-weight: 700;
+  @media (max-width: 540px) {
+  }
+  font-size: $_36px;
+  text-align: center;
 }
 
 .card_img {
-  width: 1120px;
+  // width: 1120px;
   height: 518px;
   overflow: hidden;
   border-radius: 20px;
   margin-bottom: 48px;
+  margin: 0 auto 48px;
+  @media (max-width: 960px) {
+    width: 800px;
+  }
+  @media (max-width: 830px) {
+    width: 650px;
+  }
+  @media (max-width: 700px) {
+    width: 500px;
+    height: 400px;
+  }
+  @media (max-width: 540px) {
+    width: 400px;
+    height: 300px;
+  }
+  @media (max-width: 430px) {
+    width: 290px;
+    height: 200px;
+  }
 }
 
 .card_img img {
@@ -39,6 +62,22 @@
 .wrap_content {
   width: 920px;
   margin: auto;
+  text-align: justify;
+  @media (max-width: 960px) {
+    width: 720px;
+  }
+  @media (max-width: 830px) {
+    width: 670px;
+  }
+  @media (max-width: 700px) {
+    width: 500px;
+  }
+  @media (max-width: 540px) {
+    width: 400px;
+  }
+  @media (max-width: 430px) {
+    width: 290px;
+  }
 }
 .card_text {
   width: 100%;
@@ -58,6 +97,9 @@
 .card_footer span {
   font-size: $_20px;
   cursor: pointer;
+  @media (max-width: 540px) {
+    font-size: $_16px;
+  }
 }
 
 .bookmark {
@@ -78,10 +120,13 @@
 .icon {
   margin-right: 6px;
   cursor: pointer;
-  font-size: 26px;
+  font-size: $_25px;
   transition: all 0.3s;
   padding: 16px 32px 16px 32px;
-  font-size: 26px;
+  @media (max-width: 540px) {
+    font-size: $_16px;
+    padding: 10px 20px 10px 20px;
+  }
 }
 .icon:hover {
   transform: scale(1.1);

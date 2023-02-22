@@ -1,6 +1,5 @@
-import React from "react";
 import style from "./tabs.module.scss";
-import { NavLink, Navigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
 
 function Tabs() {
@@ -12,7 +11,6 @@ function Tabs() {
         <li className={style.tab}>
           <NavLink
             to="/"
-            // /*
             className={({ isActive }) =>
               isActive ? `${"tab_link"} ${style.active}` : "tab_link"
             }
@@ -30,14 +28,6 @@ function Tabs() {
             {tab.myFavorites}
           </NavLink>
         </li>
-        {/* <li>
-        <NavLink
-          to="/posts/filtertab"
-          className={({ isActive }) => (isActive ? style.active : "")}
-        >
-          {filterTabs.year}
-        </NavLink>
-      </li> */}
       </ul>
     </nav>
   );

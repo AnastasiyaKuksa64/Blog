@@ -1,10 +1,8 @@
-import { useEffect, useState, Dispatch, SetStateAction } from "react";
+import React from "react";
 import style from "./searchComponent.module.scss";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppSelector } from "../../app/hooks";
 import { Link } from "react-router-dom";
-
 import SmallCard from "../SmallCard";
-// import SearchBox from "../SearchBox/index";
 
 interface SearchBoxProps {
   searchTerm: string;

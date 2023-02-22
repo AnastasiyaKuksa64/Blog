@@ -6,7 +6,14 @@ import Pagination from "../../components/Pagination";
 import Tabs from "../../components/Tabs";
 import { Route, Routes } from "react-router-dom";
 import Favorites from "../../components/Favourites";
-import { setCurrentPage } from "../../appSlices/filterSlice";
+import {
+  setCurrentPage,
+  fetchPaginatePosts,
+  setFilter,
+} from "../../appSlices/filterSlice";
+import { useEffect, useRef, useCallback } from "react";
+import qs from "qs";
+import { useNavigate } from "react-router-dom";
 
 interface SearchProps {
   isShows: boolean;
@@ -14,19 +21,52 @@ interface SearchProps {
 }
 
 const Home: React.FC<SearchProps> = (props) => {
-  const { currentPage: page } = useAppSelector((state) => state.filterPosts);
+  const { currentPage } = useAppSelector((state) => state.filterPosts);
   const dispatch = useAppDispatch();
-
+  // const isSearch = useRef(false);
+  // const isMounted = useRef(false);
+  // const navigate = useNavigate();
   const { isShows, searchTerm } = props;
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
   };
 
+  // const onChangePage = useCallback((currentPage: number) => {
+  //   dispatch(setCurrentPage(currentPage));
+  // }, []);
+
   // useEffect(() => {
-  //   dispatch(fetchFilteredPosts(page)); //currentPage
-  // }, [page]);
-  // console.log(page);
+  //   if (window.location.search) {
+  //     const params = qs.parse(window.location.search.substring(1));
+  //     dispatch(setFilter({ ...params }));
+  //     isSearch.current = true;
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   dispatch(fetchPaginatePosts(currentPage)); //currentPage
+  // }, []);
+  // console.log(currentPage);
+
+  // useEffect(() => {
+  //   window.scroll(0, 0);
+  //   if (!isSearch.current) {
+  //     dispatch(fetchPaginatePosts(currentPage));
+  //   }
+  //   isSearch.current = false;
+  // }, [currentPage]);
+
+  // useEffect(() => {
+  //   if (isMounted.current) {
+  //     const queryString = qs.stringify({
+  //       currentPage,
+  //     });
+  //     navigate(`?${queryString}`);
+  //   }
+  //   isMounted.current = true;
+  //   // пропадает active кнопки при обновлении страницы, но выбранные категории работают
+  // }, [currentPage]);
 
   return (
     <>
@@ -44,7 +84,10 @@ const Home: React.FC<SearchProps> = (props) => {
                 <Route index path="/*" element={<Posts />} />
                 <Route path="/favourites" element={<Favorites />} />
               </Routes>
-              <Pagination currentPage={page} onChangePage={onChangePage} />
+              <Pagination
+                currentPage={currentPage}
+                onChangePage={onChangePage}
+              />
             </>
           )}
         </div>

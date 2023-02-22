@@ -13,6 +13,7 @@ const SinglePage: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    window.scroll(0, 0);
     dispatch(fetchPostById(id));
   }, [id]);
 

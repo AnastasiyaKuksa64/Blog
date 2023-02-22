@@ -2,7 +2,7 @@ import style from "./header.module.scss";
 import { useEffect, useState, Dispatch, SetStateAction } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "../../app/hooks";
-import { faUser, faBars, faSortDown } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, Link } from "react-router-dom";
 import SearchBox from "../SearchBox/index";
 import SearchBoxMobile from "../SearchBoxMobile";
