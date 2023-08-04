@@ -1,26 +1,5 @@
-.pagination li {
-  display: inline-block;
-  overflow: hidden;
-}
-
-.pagination a {
-  text-align: center;
-  width: 45px;
-  line-height: 42px;
-  height: 45px;
-  border: 1px solid rgba(49, 48, 55, 1);
-  border-radius: 30px;
-  margin-right: 14px;
-  cursor: pointer;
-  display: inline-block;
-  color: rgba(49, 48, 55, 1);
-}
-
-.pagination li a:hover {
-  background-color: #fe5f1e;
-  color: #fff;
-  border-radius: 30px;
-}
+@import "../../style/var.scss";
+@import "../../style/fonts.scss";
 .root {
   li {
     display: inline-block;
@@ -30,14 +9,30 @@
       width: 45px;
       line-height: 42px;
       height: 45px;
-      font-size: 25px;
+      font-size: $_25px;
       border: 1px solid #ab9ddc;
       border-radius: 30px;
       margin-right: 10px;
       cursor: pointer;
       display: inline-block;
       color: #ab9ddc;
-
+      @media (max-width: 420px) {
+        width: 35px;
+        line-height: 33px;
+        height: 35px;
+        font-size: $_18px;
+        margin-right: 8px;
+      }
+      @media (max-width: 350px) {
+        width: 30px;
+        line-height: 27px;
+        height: 30px;
+        font-size: $_16px;
+      }
+      @media (max-width: 300px) {
+        margin-right: 5px;
+        font-size: $_16px;
+      }
       &:hover {
         background-color: #ab9ddc;
         color: #fff;

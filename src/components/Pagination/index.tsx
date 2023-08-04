@@ -8,8 +8,8 @@ type PaginationProps = {
 };
 
 const Pgination: React.FC<PaginationProps> = ({
-  currentPage,
   onChangePage,
+  currentPage,
 }) => {
   return (
     <>
@@ -19,7 +19,7 @@ const Pgination: React.FC<PaginationProps> = ({
         nextLabel=">"
         previousLabel="<"
         onPageChange={(event) => onChangePage(event.selected + 1)}
-        pageRangeDisplayed={4}
+        pageRangeDisplayed={6}
         pageCount={5}
         forcePage={currentPage - 1}
       />
