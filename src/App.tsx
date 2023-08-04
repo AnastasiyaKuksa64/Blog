@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./index.scss";
 import { useAppDispatch } from "./app/hooks";
 import Home from "./pages/Home";
-import SinglePage from "./pages/SinglePage";
-import Header from "./components/Header/Header";
+import FullPage from "./pages/FullPage";
 import SignIn from "./pages/SignIn/SignIn";
 import Register from "./pages/Register/Register";
-import Footer from "./components/Footer/Footer";
 import { useAppSelector } from "./app/hooks";
 import { fetchRefresh, isLogin } from "./appSlices/SignInSlice";
-import ProtectedRoute from "./components/ProtectedRoute";
+import Favorites from "./components/Favourites";
+import NotFound from "./pages/NotFound";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
-  const DarkTheme = useAppSelector((state) => state.Theme);
+  // const DarkTheme = useAppSelector((state) => state.Theme);
   const isLoggedIn = useAppSelector((state) => state.User.isLoggedIn);
   const dispatch = useAppDispatch();
 
@@ -38,32 +38,17 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isShows, setisShows] = useState(false);
-
   return (
-    <div className={DarkTheme ? "dark" : "light"}>
-      <Header
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        isShows={isShows}
-        setisShows={setisShows}
-      />
-      <Routes>
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route index path="" element={<Home />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/registration" element={<Register />} />
-        <Route element={<ProtectedRoute />}>
-          <Route
-            index
-            path="/*"
-            element={<Home isShows={isShows} searchTerm={searchTerm} />}
-          />
-          <Route path="/posts/:id" element={<SinglePage />} />
-        </Route>
-      </Routes>
-
-      <Footer />
-    </div>
+        <Route path="/favourites" element={<Favorites />} />
+        <Route path="/posts/:id" element={<FullPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 
