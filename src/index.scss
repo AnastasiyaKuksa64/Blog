@@ -3,16 +3,14 @@
 @import "./components/Footer/footer.module.scss";
 @import "./components/ThemeButton/ThemeButton.module.scss";
 @import "./components/Header/header.module.scss";
-@import "./components/SearchBox/search.module.scss";
-@import "./components/SearchComponents/searchComponent.module.scss";
 @import "./pages/SignIn/SignIn.module.scss";
 @import "./components/BigCard/cardList.module.scss";
-@import "./pages/SinglePage/singlePage.module.scss";
-@import "./components/Tabs/tabs.module.scss";
+@import "./pages/FullPage/FullPage.module.scss";
 @import "./components/logOut/logOut.module.scss";
-@import "./components/filterButten/filterButton.module.scss";
-@import "./components/Posts/posts.module.scss";
+@import "./components/Filter/filter.module.scss";
+@import "./components/Sort/sort.module.scss";
 @import "./components/Favourites/favorites.module.scss";
+@import "./components/FavouriteEmpty/FavouriteEmpty.module.scss";
 * {
   text-decoration: none;
   padding: 0;
@@ -20,7 +18,9 @@
   list-style: none;
   box-sizing: border-box;
 }
-
+body {
+  overflow-x: hidden;
+}
 .container {
   margin: auto;
   max-width: 1170px;
@@ -65,26 +65,27 @@
   --bg-button: rgba(108, 27, 219, 1);
   --bg-icon: rgba(49, 48, 55, 0.1);
 }
+.header {
+  background-color: var(--bg-color);
+}
 .light {
   background-color: var(--background-color);
 }
-.MainTitle {
+.main_title {
   color: var(--title-color);
 }
-.title {
-  color: var(--title-color);
+
+.post:hover {
+  box-shadow: var(--box-shadow);
 }
-.Formtitle {
-  color: var(--title-color);
+.post {
+  background-color: var(--bg-color);
 }
 .date {
   color: var(--date-color);
 }
-.card_content {
-  background-color: var(--bg-color);
-}
-.post:hover {
-  box-shadow: var(--box-shadow);
+.title {
+  color: var(--title-color);
 }
 .designer {
   color: var(--date-color);
@@ -95,32 +96,34 @@
 .Header {
   background-color: var(--bg-color);
 }
-.AuthorName {
+.user_name {
   color: var(--title-color);
 }
-
-.menuSearch {
+.search__button {
   color: var(--title-color);
 }
-.linkToHome {
+.link_home {
   color: var(--title-color);
 }
-.Form {
+.link_back {
+  color: var(--title-color);
+}
+.form {
   background-color: var(--bg-color);
 }
-.FormInput {
+.form_input {
   background-color: var(--bg-color);
 }
 label {
   color: var(--title-color);
 }
-.restorePassword {
+.restore_password {
   color: var(--title-color);
 }
-.switch {
+.switchon {
   color: var(--bg-button);
 }
-.CardTitle {
+.card_title {
   color: var(--title-color);
 }
 .card_text p {
@@ -132,6 +135,7 @@ label {
 .icon {
   background-color: var(--bg-icon);
   color: var(--title-color);
+  // position: absolute;
 }
 .userName {
   color: var(--title-color);
@@ -152,4 +156,24 @@ label {
 }
 .filter_button:hover {
   background-color: var(--bg-color);
+}
+.label {
+  color: var(--title-color);
+}
+.sort_name {
+  color: var(--bg-button);
+  border-bottom: 1px dashed var(--bg-button);
+}
+.empty_title {
+  color: var(--title-color);
+}
+.empty_text {
+  color: var(--title-color);
+}
+
+.errorInfo_title {
+  color: var(--title-color);
+}
+.errorInfo_text {
+  color: var(--title-color);
 }
