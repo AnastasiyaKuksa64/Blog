@@ -1,12 +1,18 @@
 @import "../../style/var.scss";
 @import "../../style/fonts.scss";
+
+.post {
+  border-radius: 16px;
+  overflow: hidden;
+  width: 352px;
+  background: white;
+  border: 1px solid #f1e7e8;
+  align-items: stretch;
+}
 .card_content {
   padding: 32px 32px 32px 32px;
   display: flex;
   flex-direction: column;
-  // overflow: hidden; ?
-  height: 100%;
-  z-index: 5;
   position: relative;
 }
 
@@ -14,41 +20,17 @@
   width: 352px;
   height: 208px;
   overflow: hidden;
-  display: block;
-  /* transition: 2s; */
-  /* position: relative;
-  transition: 0.3s cubic-bezier(0.6, 0.4, 0, 1); */
+  img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+    transition: all 2s;
+  }
 }
 
-.card_img img {
-  width: 100%;
-  height: 100%;
-  object-position: center;
-  object-fit: cover;
-  /*  */
-  transition: all 2s;
-  /* position: absolute;
-  top: 0;
-  left: 0; */
-}
-.picture_hover {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  background-color: rgba(77, 10, 199, 0.6);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: 0.3s ease;
-}
-.picture_hover:hover {
-  opacity: 0.9;
-}
 .date {
   margin-bottom: 10px;
-  display: block;
   font-size: $_16px;
   font-family: "Inter";
   font-weight: 500;
@@ -59,4 +41,85 @@
   line-height: 28px;
   font-family: "Inter";
   font-weight: 500;
+}
+
+.top_wrap {
+  position: relative;
+}
+.hover {
+  position: relative;
+}
+.hover:after {
+  content: "";
+  background: rgba(73, 102, 162, 0.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  opacity: 0;
+  transform: scale(0.3);
+  transition: 0.3s ease-in-out;
+}
+.post:hover .hover:after {
+  opacity: 1;
+  transform: scale(1);
+}
+.hover div {
+  display: block;
+  text-decoration: none;
+}
+
+.loop-action {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: 0.3s ease-in-out;
+}
+.post:hover .loop-action {
+  opacity: 1;
+}
+.loop-action .add-to-cart {
+  text-decoration: none;
+  display: block;
+  border: 1px solid white;
+  white-space: nowrap;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  font-size: 14px;
+  line-height: 1.6;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  min-width: 160px;
+  margin: 5px auto;
+  transition: 0.3s ease-in-out;
+}
+.loop-action .add-to-cart:after {
+  content: "";
+  position: absolute;
+  left: -220%;
+  top: -500%;
+  width: 140%;
+  height: 1000%;
+  transform: rotate(45deg);
+  // background: white;
+  z-index: -1;
+  transition: 0.3s ease-in-out;
+}
+.loop-action .add-to-cart:hover {
+  color: black;
+}
+.loop-action .add-to-cart:hover:after {
+  left: 0%;
+}
+.post:hover {
+  border-color: #4966a2;
+}
+.icon {
+  cursor: pointer;
 }

@@ -1,5 +1,13 @@
 import styles from "./smallCard.module.scss";
-// import "../../index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import {
+  addFavourite,
+  delitemarksFavourite,
+  selectPosts,
+} from "../../appSlices/postsSlice";
+import { Link } from "react-router-dom";
 
 interface ISmallCardProps {
   date: string;
@@ -11,32 +19,49 @@ interface ISmallCardProps {
 }
 
 const SmallCard: React.FC<ISmallCardProps> = (props) => {
+  const { title, src, id, date } = props;
+
+  const { favourites: bookMarks } = useAppSelector(selectPosts);
+  const dispatch = useAppDispatch();
+
+  const onClickRemove = () => {
+    if (window.confirm("Are you sure ? ?")) {
+      dispatch(delitemarksFavourite(id));
+    }
+  };
   return (
-    <>
-      <div className="wrap_hidden">
-        <div className={styles.card_img}>
-          <img src={props.src} alt={"src"} />
+    <article className="post">
+      <div className="top_wrap">
+        <div className="hover">
+          <div className={styles.card_img}>
+            <img src={src} alt={"src"}></img>
+          </div>
         </div>
-        <div className="picture_hover"></div>
+        <div className="loop-action">
+          <Link to={`/posts/${props.id}`} className="add-to-cart">
+            watch
+          </Link>
+          <div className={styles.icon}>
+            {bookMarks.find((item: { id: string }) => item.id === id) ? (
+              <div className="add-to-cart" onClick={onClickRemove}>
+                delete from <FontAwesomeIcon icon={faBookmark} />
+              </div>
+            ) : (
+              <div
+                className="add-to-cart"
+                onClick={() => dispatch(addFavourite(props))}
+              >
+                add to <FontAwesomeIcon icon={faBookmark} />
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-      <div
-        className="card_content"
-        // className={styles.card_content}
-      >
-        <span
-          className="date"
-          // className={styles.card_dateDay}
-        >
-          {props.date}
-        </span>
-        <h3
-          className="title"
-          // className={styles.card_title}
-        >
-          {props.title}
-        </h3>
+      <div className="card_content">
+        <span className="date">{date}</span>
+        <h3 className="title">{title}</h3>
       </div>
-    </>
+    </article>
   );
 };
 
