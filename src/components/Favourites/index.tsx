@@ -1,21 +1,47 @@
 import SmallCard from "../SmallCard";
 import style from "./favorites.module.scss";
-import { useAppSelector } from "../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { Link } from "react-router-dom";
+import FavouriteEmpty from "../FavouriteEmpty";
+import { deliteAllFavourite, selectPosts } from "../../appSlices/postsSlice";
 
 function Favorites() {
-  const favourite = useAppSelector((state) => state.posts.favourites);
+  const dispatch = useAppDispatch();
+  const { favourites } = useAppSelector(selectPosts);
+
+  const DeleteAll = () => {
+    if (window.confirm("Are you sure?")) {
+      dispatch(deliteAllFavourite(favourites));
+    }
+  };
 
   return (
-    <>
-      <div className={style.wrap}>
-        {favourite.map((post) => (
-          <Link key={post.id} className="post" to={`/posts/${post.id}`}>
-            <SmallCard {...post} />
-          </Link>
-        ))}
+    <section className="favourite">
+      <div className="container">
+        <h1 className="main_title">Favourite</h1>
+        <div className={style.wrap}>
+          {favourites.length < 1 ? (
+            <FavouriteEmpty />
+          ) : (
+            <>
+              <div className={style.button_wrap}>
+                <Link className="link_home" to="/">
+                  Back to Home /
+                </Link>
+                <button onClick={DeleteAll} className="deleteAll">
+                  Delete All
+                </button>
+              </div>
+              <div className={style.posts_wrap}>
+                {favourites.map((post: any) => (
+                  <SmallCard key={post.id} {...post} />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
       </div>
-    </>
+    </section>
   );
 }
 
