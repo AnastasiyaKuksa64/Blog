@@ -1,0 +1,123 @@
+@import "../../style/var.scss";
+@import "../../style/fonts.scss";
+.wrap {
+  display: flex;
+  // @media (max-width: 1205px) {
+  //   margin-bottom: 50px;
+  // }
+}
+.filter {
+  display: flex;
+  align-items: center;
+  @media (max-width: 960px) {
+    display: none;
+  }
+  li {
+    margin-right: 18px;
+    outline: none;
+    border-radius: 4px;
+    font-size: $_25px;
+    font-family: "Inter";
+    font-weight: 500;
+    transition: 0.3s;
+    cursor: pointer;
+    @media (max-width: 1205px) {
+      margin-right: 10px;
+      font-size: $_20px;
+    }
+    @media (max-width: 772px) {
+    }
+    @media (max-width: 610px) {
+      padding: 14px 20px;
+    }
+    @media (max-width: 470px) {
+      margin: 0px 10px 10px 0px;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    &.active {
+      background-color: rgba(128, 84, 209, 0.8);
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+  &_item {
+    padding: 8px 10px;
+    position: relative;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 1);
+    font-size: $_18px;
+    border-radius: 4px;
+    width: 200px;
+    height: 56px;
+    color: rgba(49, 48, 55, 1);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      border: 1px solid rgba(108, 27, 219, 1);
+    }
+    &.active {
+      background-color: rgba(108, 27, 219, 1);
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+  &_button {
+    padding: 8px 10px;
+    background-color: rgba(255, 255, 255, 1);
+    font-size: $_18px;
+    border-radius: 4px;
+    width: 200px;
+    height: 56px;
+    color: rgba(49, 48, 55, 1);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: 0.3s;
+    @media (max-width: 1205px) {
+      padding: 5px 7px;
+      width: 170px;
+      height: 50px;
+    }
+    &:hover {
+      border: 1px solid rgba(108, 27, 219, 1);
+    }
+  }
+  &_tab {
+    margin-bottom: 10px;
+    position: relative;
+    padding: 8px 10px;
+    background-color: rgba(255, 255, 255, 1);
+    font-size: $_18px;
+    border-radius: 4px;
+    width: 200px;
+    height: 56px;
+    color: rgba(49, 48, 55, 1);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+}
+
+.dropdown_filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  display: none;
+  @media (max-width: 960px) {
+    display: block;
+  }
+  ul {
+    transition: 0.3s;
+  }
+}
