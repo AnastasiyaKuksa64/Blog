@@ -1,0 +1,65 @@
+@import "../../style/var.scss";
+@import "../../style/fonts.scss";
+.search {
+  width: 100%;
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  @media (max-width: 670px) {
+    display: none;
+  }
+  &__input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    background-color: transparent;
+    color: rgba(49, 48, 55, 0.5);
+    border: none;
+    margin: 0;
+    border-radius: 0;
+    font-size: $_16px;
+    font-weight: 400px;
+    padding: 33px;
+    color: aliceblue;
+    &:focus {
+      background-color: rgba(49, 48, 55, 0.3);
+      position: relative;
+      color: aliceblue;
+    }
+  }
+  &__button {
+    width: 85px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: $_18px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    transition: 0.3s;
+    &:hover {
+      color: rgb(15, 27, 107);
+    }
+  }
+  &__clear {
+    width: 85px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: $_18px;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    transition: 0.3s;
+    opacity: 0.4;
+    position: absolute;
+    right: 0px;
+    top: 25%;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
