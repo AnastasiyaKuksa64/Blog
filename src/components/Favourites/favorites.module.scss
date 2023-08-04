@@ -1,16 +1,39 @@
-.post {
-  margin: 0 15px 40px;
-  width: 352px;
-  border-radius: 16px;
-  overflow: hidden;
-  transition: 0.9s;
-  position: relative;
-  display: block;
-  transition: 0.3s cubic-bezier(0.6, 0.4, 0, 1);
+@import "../../style/var.scss";
+@import "../../style/fonts.scss";
+.favourite {
+  width: 100%;
+  padding: 64px 0 72px;
 }
-.wrap {
+.link_home {
+  display: inline-block;
+  font-size: $_16px;
+  font-family: "Inter";
+  font-weight: 400;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.posts_wrap {
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 0 -15px;
   display: flex;
+}
+
+.deleteAll {
+  font-size: 19px;
+  color: black;
+  border: 1px solid rgb(110, 43, 154);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 5px;
+  &:hover {
+    background-color: bisque;
+  }
+}
+.button_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 60px 0 50px 0;
 }
