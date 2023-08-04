@@ -1,102 +1,81 @@
 import style from "./header.module.scss";
-import { useEffect, useState, Dispatch, SetStateAction } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "../../app/hooks";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { NavLink, Link } from "react-router-dom";
-import SearchBox from "../SearchBox/index";
-import SearchBoxMobile from "../SearchBoxMobile";
+import { faUser, faHeart } from "@fortawesome/free-regular-svg-icons";
+import { NavLink, useLocation } from "react-router-dom";
 import LogOut from "../LogOut/logoutLink";
 import User from "../User/user";
-import HeaderIcon from "../HeaderIcon/HeaderIcon";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import Search from "../Search/index";
 
-interface SearchBoxProps {
-  setSearchTerm: Dispatch<SetStateAction<string>>;
-  isShows: boolean;
-  setisShows: Dispatch<SetStateAction<boolean>>;
-  searchTerm: string;
-}
+interface SearchProps {}
 
-const Header: React.FC<SearchBoxProps> = (props) => {
-  const { isShows, setisShows, searchTerm, setSearchTerm } = props;
-  const Search = useAppSelector((state) => state.searchTerm.search);
+const Header: React.FC<SearchProps> = () => {
+  const faUserIcon = faUser as IconProp;
+  const faHeartIcon = faHeart as IconProp;
   const isLogin = useAppSelector((state) => state.User.isLoggedIn);
-  const [isActive, setIsActive] = useState(false);
-
-  useEffect(() => {
-    setisShows(!!Search.length);
-  }, [searchTerm]);
+  const location = useLocation();
+  //используем если хотим по условному рендеру в зависимости от того что у нас в адресной строчке рендерить что-то. Дает понять что не только адресная строчка поменялась но компоненту нужно сделать перерисовку
 
   return (
     <>
-      <section className="Header">
+      <section className="header">
         <div className={style.container}>
           <div className={style.wrap}>
-            <div className={style.wrapButton}>
-              <Link className={style.menuButton} to="/">
-                Blogologo
-              </Link>
+            <div className={style.logo}>
+              <NavLink className={style.logo__title} to="/">
+                <div>Blog</div>
+              </NavLink>
             </div>
-            <SearchBox
-              setSearchTerm={setSearchTerm}
-              isShows={isShows}
-              setisShows={setisShows}
-              SearchTerm={searchTerm}
-            />
-            <HeaderIcon />
-            <div className={style.burger}>
-              <div className={style.wrap_burger}>
-                <button
-                  className={style.burger_button}
-                  onClick={() => setIsActive(!isActive)}
+            <Search />
+            {isLogin ? (
+              <div className={style.menu_wrap}>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${style.btn_link} ${style.active}`
+                      : `${style.btn_link}`
+                  }
+                  to="/favourites"
                 >
-                  <FontAwesomeIcon
-                    className={style.burger_icon}
-                    icon={faBars}
-                  />
-                </button>
-              </div>
-
-              {isActive && (
-                <div className={style.menu__show}>
-                  {isLogin ? (
-                    <div className={style.wr}>
-                      <SearchBoxMobile
-                        setSearchTerm={setSearchTerm}
-                        isShows={isShows}
-                        setisShows={setisShows}
-                        SearchTerm={searchTerm}
-                      />
-                      <div className={style.icon_wrap}>
-                        <User />
-                        <LogOut />
-                      </div>
-                    </div>
-                  ) : (
-                    <div className={style.wr}>
-                      <SearchBoxMobile
-                        setSearchTerm={setSearchTerm}
-                        isShows={isShows}
-                        setisShows={setisShows}
-                        SearchTerm={searchTerm}
-                      />
-                      <div className={style.wrap_link}>
-                        <NavLink
-                          className={({ isActive }) =>
-                            isActive
-                              ? `${style.burger_link} ${style.active}`
-                              : `${style.burger_link}`
-                          }
-                          to="/signIn"
-                        >
-                          Sign in
-                        </NavLink>
-                      </div>
-                    </div>
-                  )}
+                  <FontAwesomeIcon icon={faHeartIcon} />
+                </NavLink>
+                <div className={style.icon_wrap}>
+                  <User />
+                  <LogOut />
                 </div>
-              )}
-            </div>
+              </div>
+            ) : (
+              <nav className={style.link_wrap}>
+                {location.pathname !== "/favourites" ? (
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? `${style.btn_link} ${style.active}`
+                        : `${style.btn_link}`
+                    }
+                    to="/favourites"
+                  >
+                    <FontAwesomeIcon icon={faHeartIcon} />
+                  </NavLink>
+                ) : (
+                  <NavLink className={style.btn_active} to="/favourites">
+                    <FontAwesomeIcon icon={faHeartIcon} />
+                  </NavLink>
+                )}
+
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${style.btn_link} ${style.active}`
+                      : `${style.btn_link}`
+                  }
+                  to="/signIn"
+                >
+                  <FontAwesomeIcon icon={faUserIcon} />
+                </NavLink>
+              </nav>
+            )}
           </div>
         </div>
       </section>
