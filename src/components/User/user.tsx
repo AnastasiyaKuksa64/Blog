@@ -8,13 +8,11 @@ const User: React.FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.aurhor}>
-        <div className={styles.authorIcon}>
+      <div className={styles.user}>
+        <span className={styles.user_icon}>
           <FontAwesomeIcon icon={faUser} />
-        </div>
-        <span className="AuthorName">
-          {JSON.stringify(userStatus.username)}
         </span>
+        <span className="user_name">{JSON.stringify(userStatus.username)}</span>
       </div>
     </div>
   );

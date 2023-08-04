@@ -20,47 +20,39 @@
   transform: scale(1.09);
   color: red;
 }
-.logOut {
-  font-size: $_16px;
-  font-family: "Inter";
-  font-weight: 500;
-}
-.AuthorName {
-  color: rgba(49, 48, 55, 1);
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  border: none;
-  transition: 0.3s;
-  font-size: $_16px;
-  font-family: "Inter";
-  outline: none;
-  background-color: transparent;
-  // @media (max-width: 670px) {
-  //   margin-right: 20px;
-  // }
-}
-.aurhor {
+.user {
   display: flex;
   align-items: center;
-  // justify-content: space-around;
   padding: 8px;
   width: 100%;
-}
-.authorIcon {
-  width: 48px;
-  height: 48px;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  background-color: rgba(77, 10, 199, 1);
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: 0.1s;
-  font-size: 25px;
-  color: white;
-  margin-right: 10px;
-}
-.burger_icon {
+  &_icon {
+    width: 48px;
+    height: 48px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(77, 10, 199, 1);
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.1s;
+    font-size: $_25px;
+    color: white;
+    margin-right: 10px;
+  }
+  &_name {
+    color: rgba(49, 48, 55, 1);
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    font-size: $_16px;
+    font-family: "Inter";
+    outline: none;
+    background-color: transparent;
+    // @media (max-width: 670px) {
+    //   margin-right: 20px;
+    // }
+  }
 }
