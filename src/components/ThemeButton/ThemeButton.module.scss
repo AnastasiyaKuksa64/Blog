@@ -37,4 +37,7 @@
   font-weight: 500;
   display: inline;
   margin-right: 22px;
+  @media (max-width: 540px) {
+    font-size: $_14px;
+  }
 }
