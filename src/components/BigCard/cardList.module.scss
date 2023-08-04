@@ -3,119 +3,106 @@
 .post {
   margin: 0 15px 72px;
 }
-.linkToHome {
-  /* margin: 32px 0; */
+.link_home {
   display: block;
   font-size: $_16px;
   font-family: "Inter";
   font-weight: 400;
 }
-.card_content_wrap {
-  margin-bottom: 10px;
-}
-.CardTitle {
-  font-size: $_56px;
-  margin-bottom: 48px;
-  display: flex;
-  justify-content: center;
-  font-family: "Inter";
-  font-weight: 700;
-  @media (max-width: 540px) {
+.card {
+  margin: 25px 0 10px;
+  &_title {
+    font-size: $_56px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: center;
+    font-family: "Inter";
+    font-weight: 700;
+    text-align: center;
+    @media (max-width: 740px) {
+      font-size: $_25px;
+    }
   }
-  font-size: $_36px;
-  text-align: center;
+
+  &_img {
+    height: 518px;
+    overflow: hidden;
+    border-radius: 20px;
+    margin-bottom: 48px;
+    margin: 0 auto 48px;
+    @media (max-width: 960px) {
+      width: 800px;
+    }
+    @media (max-width: 830px) {
+      width: 650px;
+    }
+    @media (max-width: 700px) {
+      width: 500px;
+      height: 400px;
+    }
+    @media (max-width: 540px) {
+      width: 400px;
+      height: 300px;
+    }
+    @media (max-width: 430px) {
+      width: 290px;
+      height: 200px;
+    }
+    @media (max-width: 315px) {
+      width: 240px;
+      height: 200px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-position: center;
+      object-fit: cover;
+    }
+  }
+  &_description {
+    width: 920px;
+    margin: auto;
+    text-align: justify;
+    @media (max-width: 960px) {
+      width: 720px;
+    }
+    @media (max-width: 830px) {
+      width: 670px;
+    }
+    @media (max-width: 700px) {
+      width: 500px;
+    }
+    @media (max-width: 540px) {
+      width: 400px;
+    }
+    @media (max-width: 430px) {
+      width: 290px;
+    }
+    @media (max-width: 430px) {
+      width: 250px;
+    }
+  }
+  &_text {
+    width: 100%;
+    font-size: $_18px;
+    font-family: "Inter";
+    font-weight: 400;
+    @media (max-width: 540px) {
+      font-size: $_14px;
+    }
+    p {
+      margin-bottom: 48px;
+    }
+  }
+  &_footer {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
-.card_img {
-  // width: 1120px;
-  height: 518px;
-  overflow: hidden;
-  border-radius: 20px;
-  margin-bottom: 48px;
-  margin: 0 auto 48px;
-  @media (max-width: 960px) {
-    width: 800px;
-  }
-  @media (max-width: 830px) {
-    width: 650px;
-  }
-  @media (max-width: 700px) {
-    width: 500px;
-    height: 400px;
-  }
-  @media (max-width: 540px) {
-    width: 400px;
-    height: 300px;
-  }
-  @media (max-width: 430px) {
-    width: 290px;
-    height: 200px;
-  }
-}
-
-.card_img img {
-  width: 100%;
-  height: 100%;
-  object-position: center;
-  object-fit: cover;
-}
-.wrap_content {
-  width: 920px;
-  margin: auto;
-  text-align: justify;
-  @media (max-width: 960px) {
-    width: 720px;
-  }
-  @media (max-width: 830px) {
-    width: 670px;
-  }
-  @media (max-width: 700px) {
-    width: 500px;
-  }
-  @media (max-width: 540px) {
-    width: 400px;
-  }
-  @media (max-width: 430px) {
-    width: 290px;
-  }
-}
-.card_text {
-  width: 100%;
-  font-size: $_18px;
-  font-family: "Inter";
-  font-weight: 400;
-}
-.card_text p {
-  margin-bottom: 48px;
-}
-
-.card_footer {
-  display: flex;
-  justify-content: space-between;
-}
-
-.card_footer span {
-  font-size: $_20px;
-  cursor: pointer;
-  @media (max-width: 540px) {
-    font-size: $_16px;
-  }
-}
-
-.bookmark {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.card_footer span:hover {
-  color: blue;
-}
 .marks {
   display: flex;
   width: 350px;
-}
-.icon:last-child {
-  margin-right: 0;
 }
 .icon {
   margin-right: 6px;
@@ -127,7 +114,10 @@
     font-size: $_16px;
     padding: 10px 20px 10px 20px;
   }
-}
-.icon:hover {
-  transform: scale(1.1);
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:last-child {
+    margin-right: 0;
+  }
 }
