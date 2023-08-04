@@ -2,7 +2,6 @@ import styles from "./registretion.module.scss";
 import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useNavigate } from "react-router-dom";
-// import { Navigate } from "react-router-dom";
 import {
   changeErrorMessage,
   changeIsSuccess,
@@ -60,18 +59,18 @@ const Registeration: React.FC = () => {
     <section className={styles.regisretion}>
       <div className={styles.container}>
         <div className={styles.wrap}>
-          <span className="linkToHome" onClick={() => navigate("/")}>
-            Back to Home
+          <span className="link_home" onClick={() => navigate("/")}>
+            Back to Home /
           </span>
           {isToken ? (
             <>
-              <h2 className="Formtitle">Registration confirmation</h2>
-              <form className="Form" onSubmit={handleActivate}>
+              <h2 className="main_title">Registration confirmation</h2>
+              <form className="form" onSubmit={handleActivate}>
                 {errorMessage && (
                   // unexpected end of JSON input. но в network status 204.
-                  <span className={styles.err}>{errorMessage}</span>
+                  <span className={styles.error_message}>{errorMessage}</span>
                 )}
-                <div className={styles.Wrapparagraph}>
+                <div className={styles.wrap_paragraph}>
                   <p className={styles.paragraph}>
                     Please activate your account with the activation link in
                     example@gmail.com. Please, check your email
@@ -80,7 +79,7 @@ const Registeration: React.FC = () => {
                 <div className={styles.input_wrap}>
                   <label htmlFor="token">Your token</label>
                   <input
-                    className="FormInput"
+                    className="form_input"
                     type="text"
                     required
                     placeholder="Your token"
@@ -91,7 +90,7 @@ const Registeration: React.FC = () => {
 
                 <div className={styles.wrap_SignUpButton}>
                   <input
-                    className={styles.SignUpButton}
+                    className={styles.signup}
                     type="submit"
                     value="Submit"
                     placeholder="Sign up"
@@ -101,15 +100,15 @@ const Registeration: React.FC = () => {
             </>
           ) : (
             <>
-              <h2 className="Formtitle">Registration</h2>
-              <form className="Form" onSubmit={handleSubmit}>
+              <h2 className="main_title">Registration</h2>
+              <form className="form" onSubmit={handleSubmit}>
                 {errorMessage && (
-                  <span className={styles.err}>{errorMessage}</span>
+                  <span className={styles.error_message}>{errorMessage}</span>
                 )}
                 <div className={styles.input_wrap}>
                   <label htmlFor="name">Name</label>
                   <input
-                    className="FormInput"
+                    className="form_input"
                     type="text"
                     value={username}
                     onChange={(e) => setUserName(e.target.value)}
@@ -120,7 +119,7 @@ const Registeration: React.FC = () => {
                 <div className={styles.input_wrap}>
                   <label htmlFor="email">email</label>
                   <input
-                    className="FormInput"
+                    className="form_input"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
@@ -131,7 +130,7 @@ const Registeration: React.FC = () => {
                 <div className={styles.input_wrap}>
                   <label htmlFor="password">password</label>
                   <input
-                    className="FormInput"
+                    className="form_input"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     type="password"
@@ -142,7 +141,7 @@ const Registeration: React.FC = () => {
                 <div className={styles.input_wrap}>
                   <label htmlFor="confirm">Confirm password</label>
                   <input
-                    className="FormInput"
+                    className="form_input"
                     type="password"
                     placeholder="Confirm password"
                     required
@@ -151,12 +150,15 @@ const Registeration: React.FC = () => {
                   />
                 </div>
                 <input
-                  className={styles.SignUpButton}
+                  className={styles.signup}
                   type="submit"
                   value="Sign Up"
                   placeholder="Sign up"
                 />
-                <button className="switch" onClick={() => navigate("/signin")}>
+                <button
+                  className="switchon"
+                  onClick={() => navigate("/signin")}
+                >
                   Already have an account? SIgn In here.
                 </button>
               </form>
