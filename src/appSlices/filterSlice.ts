@@ -5,102 +5,64 @@ type Post = {
   title: string;
   discription: string;
   src: string;
-  category: number;
-  rating: number | any;
-  popular: string;
   id: string;
 };
 
-export type PostsParams = {
-  sortBy: string;
-  category: string;
-  currentPage: string;
+type Sort = {
+  name: string;
+  sortProperty: string;
 };
 
 type PostsState = {
   filterPosts: Post[];
-  categoryId: number | any;
+  categoryId: number;
+  sort: Sort;
   currentPage: number;
+  searchValue: string;
 };
 
 const initialState: PostsState = {
   filterPosts: [],
-  currentPage: 1,
   categoryId: 0,
+  sort: {
+    name: "popular",
+    sortProperty: "rating",
+  },
+  currentPage: 1,
+  searchValue: "",
 };
 
-export const fetchFilteredPosts = createAsyncThunk(
-  "filteredPosts/filter",
-  async (category: number, { rejectWithValue }) => {
-    // const { category, page } = parameters;
-    //так перестает работать фильтерб работает только _limit, почему, чего-то нехватает ??
-    const response = await fetch(
-      `http://localhost:3000/posts?${
-        category > 0 ? `category=${category}` : ""
-      }`
-      //_limit=6&&_page=${page}
-    );
-    if (!response.ok) {
-      return rejectWithValue("Server error");
-    }
-    const json = await response.json();
-    return json;
-  }
-);
-
-export const fetchPaginatePosts = createAsyncThunk(
-  "filteredPosts/paginate",
-  async (page: number, { rejectWithValue }) => {
-    const response = await fetch(
-      `http://localhost:3000/posts?_limit=6&&_page=${page}`
-    );
-    if (!response.ok) {
-      return rejectWithValue("Server error");
-    }
-    const json = await response.json();
-    return json;
-  }
-);
-
-export const filteredPostsSlice = createSlice({
-  name: "filteredPosts",
+export const filterSlice = createSlice({
+  name: "filters",
   initialState,
   reducers: {
-    setCategoryId: (state, action: PayloadAction<any>) => {
+    setCategoryId: (state, action: PayloadAction<number>) => {
       state.categoryId = action.payload;
     },
-    setFilter: (state, action: PayloadAction<any>) => {
-      // state.currentPage = action.payload.currentPage;
-      state.categoryId = action.payload.categoryId;
+    setSort: (state, action: PayloadAction<any>) => {
+      state.sort = action.payload;
     },
-    setCurrentPage(state, action: PayloadAction<number>) {
+    setCurrentPage: (state, action: PayloadAction<any>) => {
       state.currentPage = action.payload;
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(
-      fetchFilteredPosts.fulfilled,
-      (state, action: PayloadAction<any[]>) => {
-        state.filterPosts = action.payload;
-        console.log(action.payload);
-      }
-    );
-    builder.addCase(
-      fetchPaginatePosts.fulfilled,
-      (state, action: PayloadAction<any>) => {
-        state.currentPage = action.payload;
-        console.log(action.payload);
-      }
-    );
-    builder.addCase(fetchFilteredPosts.pending, (state, action) => {
-      state.filterPosts = [];
-    });
-    builder.addCase(fetchFilteredPosts.rejected, (state, action) => {
-      state.filterPosts = [];
-    });
+    setFilters: (state, action: PayloadAction<any>) => {
+      state.currentPage = Number(action.payload.currentPage);
+      state.sort = action.payload.sort;
+      state.categoryId = Number(action.payload.categoryId);
+    },
+    setSearchValue: (state, action: PayloadAction<string>) => {
+      state.searchValue = action.payload;
+    },
   },
 });
 
-export const { setFilter, setCurrentPage, setCategoryId } =
-  filteredPostsSlice.actions;
-export default filteredPostsSlice.reducer;
+export const selectFilter = (state: any) => state.filterReducer;
+
+export const {
+  setCategoryId,
+  setSort,
+  setCurrentPage,
+  setFilters,
+  setSearchValue,
+} = filterSlice.actions;
+export default filterSlice.reducer;
