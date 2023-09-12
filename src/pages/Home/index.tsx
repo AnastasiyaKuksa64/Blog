@@ -103,7 +103,7 @@ const Home = () => {
                 <h2 className="errorInfo_title">OOPS!</h2>
 
                 <p className="errorInfo_text">Sorry. There was an error.</p>
-                <img src={emogy} alt="Error cart" />
+                <img src={emogy as string} alt="Error cart" />
               </div>
             ) : (
               <>{status === "loading" ? skeletons : Posts}</>

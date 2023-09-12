@@ -1,7 +1,7 @@
 import BigCard from "../../components/BigCard";
 import emogy from "../../img/empty-favorites.png";
 import styles from "./FullPage.module.scss";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { fetchPostById } from "../../appSlices/postsSlice";
@@ -10,10 +10,15 @@ import { selectPosts } from "../../appSlices/postsSlice";
 
 const FullPage: React.FC = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   //используем чтобы оповестить компонент о том что нужно сделать перерисовку и вернуть в переменную те динамические параметры(/:id - это динамические, sort=...-это не динамические параметры) которые будем передавать если они будут содержаться
   const post = useAppSelector((state) => state.posts.post);
   const { status } = useAppSelector(selectPosts);
   const dispatch = useAppDispatch();
+
+  const handleForward = () => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -28,11 +33,12 @@ const FullPage: React.FC = () => {
             <div className={styles.errorInfo}>
               <h2 className="errorInfo_title">OOPS!</h2>
               <p className="errorInfo_text">
-                Sorry. There was an error. We can't find this post{" "}
+                Sorry. There was an error. We can't find this post
               </p>
-              <img src={emogy} alt="Error cart" />
-              <button className={styles.link_button}>
-                <Link to="/">Go to home page</Link>
+              <img src={emogy as string} alt="Error cart" />
+              <button className={styles.link_button} onClick={handleForward}>
+                {/* <Link to="/">Go to home page</Link> */}
+                Go back
               </button>
             </div>
           ) : (

@@ -13,7 +13,6 @@ import NotFound from "./pages/NotFound";
 import MainLayout from "./layouts/MainLayout";
 
 function App() {
-  // const DarkTheme = useAppSelector((state) => state.Theme);
   const isLoggedIn = useAppSelector((state) => state.User.isLoggedIn);
   const dispatch = useAppDispatch();
 
@@ -42,10 +41,10 @@ function App() {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index path="" element={<Home />} />
-        <Route path="/signIn" element={<SignIn />} />
-        <Route path="/registration" element={<Register />} />
-        <Route path="/favourites" element={<Favorites />} />
-        <Route path="/posts/:id" element={<FullPage />} />
+        <Route path="signIn" element={<SignIn />} />
+        <Route path="registration" element={<Register />} />
+        <Route path="favourites" element={<Favorites />} />
+        <Route path="posts/:id" element={<FullPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
